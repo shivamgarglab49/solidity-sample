@@ -11,3 +11,9 @@ REPORT_GAS=true npx hardhat test
 npx hardhat node
 npx hardhat run scripts/deploy.ts
 ```
+
+# using below command to compile the sol files from project root
+
+```shell
+npx hardhat compile
+```

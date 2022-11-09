@@ -17,3 +17,9 @@ npx hardhat run scripts/deploy.ts
 ```shell
 npx hardhat compile
 ```
+
+Using below command to deploy any contract
+
+```shell
+npx hardhat run scripts/Deploy.ts
+```

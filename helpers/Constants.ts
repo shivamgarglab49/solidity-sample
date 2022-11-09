@@ -8,8 +8,10 @@ import {
 export const TransparentUpgradeableProxy = "TransparentUpgradeableProxy";
 
 export const SUPPORTED_CONTRACTS = [
-  "CounterContract",
+  // "CounterContract",
   // TransparentUpgradeableProxy,
+  // "MyHederaTokenService",
+  "TokenCreator",
 ];
 
 export const EMPTY_CONTRACT_PARAMS = new ContractFunctionParameters();

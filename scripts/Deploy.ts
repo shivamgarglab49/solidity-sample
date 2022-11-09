@@ -3,17 +3,13 @@ import { SUPPORTED_CONTRACTS, admin } from "../helpers/Constants";
 import { Helper } from "../helpers/Helper";
 
 async function main() {
-  const { sourcePaths } = Helper.getContractPathList();
-  if (sourcePaths.length == 0) {
-    console.error("No contract found");
-    process.exit(0);
-  }
-  const execSync = require("child_process").execSync;
-  execSync("npx hardhat clean"); // cleaning artifact folder
-  execSync("npx hardhat compile"); // building artifact folder
-  const { compiledPaths } = Helper.getContractPathList();
+  const { compiledPaths, sourcePaths } = Helper.getContractPathList();
   if (compiledPaths.length == 0) {
     console.error("No compiled contract found");
+    process.exit(0);
+  }
+  if (sourcePaths.length == 0) {
+    console.error("No contract found");
     process.exit(0);
   }
   const contractJsonList = compiledPaths
@@ -25,7 +21,10 @@ async function main() {
     "Contract Names => ",
     contractJsonList.map((item) => item.contractName)
   );
-
+  if (contractJsonList.length == 0) {
+    console.error("No supported contract exist");
+    process.exit(0);
+  }
   const [counterContractObj] = contractJsonList;
   const response = await new Helper().saveContractOnHedera(
     admin.client,

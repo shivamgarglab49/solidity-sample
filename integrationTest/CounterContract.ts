@@ -84,7 +84,7 @@ class CounterContract {
   }
 }
 
-CounterContract.run("0.0.48847486") // using proxy contract id (this took from ==> output/contracts.json)
+CounterContract.run("0.0.48847832") // using orignal contract id (this took from ==> output/contracts.json)
   .then((response) => console.log(response))
   .catch((err) => console.error(err))
   .finally(() => process.exit(0));

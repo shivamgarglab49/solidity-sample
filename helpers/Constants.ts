@@ -9,7 +9,7 @@ export const TransparentUpgradeableProxy = "TransparentUpgradeableProxy";
 
 export const SUPPORTED_CONTRACTS = [
   "CounterContract",
-  TransparentUpgradeableProxy,
+  // TransparentUpgradeableProxy,
 ];
 
 export const EMPTY_CONTRACT_PARAMS = new ContractFunctionParameters();

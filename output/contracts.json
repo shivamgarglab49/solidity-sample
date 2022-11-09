@@ -1,8 +1,14 @@
 [
     {
         "contractName": "CounterContract",
-        "contractId": "0.0.48847048",
-        "contractAddress": "0x0000000000000000000000000000000002e958c8",
-        "timestamp": "2022-11-09T09:59:15.397Z"
+        "contractId": "0.0.48847479",
+        "contractAddress": "0x0000000000000000000000000000000002e95a77",
+        "timestamp": "2022-11-09T11:58:30.344Z"
+    },
+    {
+        "contractName": "TransparentUpgradeableProxy",
+        "contractId": "0.0.48847486",
+        "contractAddress": "0x0000000000000000000000000000000002e95a7e",
+        "timestamp": "2022-11-09T11:58:40.430Z"
     }
 ]

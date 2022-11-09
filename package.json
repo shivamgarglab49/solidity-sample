@@ -23,6 +23,8 @@
     "@types/fs-extra": "^9.0.13",
     "fs-extra": "^10.1.0",
     "get-all-files": "^4.1.0",
-    "hardhat": "^2.12.2"
+    "hardhat": "^2.12.2",
+    "@openzeppelin/contracts": "^4.7.3",
+    "@openzeppelin/contracts-upgradeable": "^4.7.3"
   }
 }

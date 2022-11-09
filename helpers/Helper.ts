@@ -56,6 +56,7 @@ export class Helper {
     }
     const response = {
       contractId: contractId.toString(),
+      address: contractId.toSolidityAddress(),
       savedLocally: false,
     };
     if (saveFileConfig != null && saveFileConfig.enabled) {

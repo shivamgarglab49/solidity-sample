@@ -18,7 +18,11 @@
   },
   "homepage": "https://github.com/shivamgarglab49/solidity-sample#readme",
   "devDependencies": {
+    "@hashgraph/sdk": "^2.18.5",
     "@nomicfoundation/hardhat-toolbox": "^2.0.0",
+    "@types/fs-extra": "^9.0.13",
+    "fs-extra": "^10.1.0",
+    "get-all-files": "^4.1.0",
     "hardhat": "^2.12.2"
   }
 }

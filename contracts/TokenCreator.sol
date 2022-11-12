@@ -55,6 +55,48 @@ contract TokenCreator is Initializable, ITokenCreator {
         return int256(token.totalSupply());
     }
 
+    function mintT(int256 count) external returns (int256 responseCode) {
+        require(address(token) > address(0x0), "token not created yet");
+        require(count > 0, "count must be > 0");
+        (responseCode, ) = service.mintTokenP(address(token), count);
+        require(
+            responseCode == HederaResponseCodes.SUCCESS,
+            "token minted failed."
+        );
+    }
+
+    function assosiateT(address reciever)
+        external
+        returns (int256 responseCode)
+    {
+        require(address(token) > address(0x0), "token not created yet");
+        require(address(reciever) > address(0x0), "receiver address error");
+        responseCode = service.associateTokenP(reciever, address(token));
+        require(
+            responseCode == HederaResponseCodes.SUCCESS,
+            "token assocation failed."
+        );
+    }
+
+    function transferT(address reciever, int256 count)
+        external
+        returns (int256 responseCode)
+    {
+        require(address(token) > address(0x0), "token not created yet");
+        require(address(reciever) > address(0x0), "receiver address error");
+        require(count > 0, "count must be > 0");
+        responseCode = service.transferTokenP(
+            address(token),
+            address(service),
+            reciever,
+            count
+        );
+        require(
+            responseCode == HederaResponseCodes.SUCCESS,
+            "token transferT failed."
+        );
+    }
+
     function allocateToken(address reciever, int256 count)
         external
         override
@@ -95,7 +137,7 @@ contract TokenCreator is Initializable, ITokenCreator {
     {
         require(count > 0, "count must be > 0");
         require(
-            this.fetchBalanceOf(sender) > count,
+            this.fetchBalanceOf(sender) >= count,
             "user don't have enough count"
         );
         // step1- transfer token with given count
@@ -154,7 +196,7 @@ contract TokenCreator is Initializable, ITokenCreator {
                 IMyHederaTokenService.createFungibleTokenP.selector,
                 myToken,
                 inititalSupply,
-                8
+                0
             )
         );
 

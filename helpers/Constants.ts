@@ -3,6 +3,7 @@ import {
   ContractFunctionParameters,
   AccountId,
   PrivateKey,
+  Hbar,
 } from "@hashgraph/sdk";
 
 export const TransparentUpgradeableProxy = "TransparentUpgradeableProxy";
@@ -27,10 +28,9 @@ export const admin = {
   idObject: AccountId.fromString(ADMIN_ACCOUNT_ID).toSolidityAddress(),
   privateKey: ADMIN_ACCOUNT_P_KEY,
   privateKeyObject: PrivateKey.fromString(ADMIN_ACCOUNT_P_KEY),
-  client: Client.forTestnet().setOperator(
-    ADMIN_ACCOUNT_ID,
-    ADMIN_ACCOUNT_P_KEY
-  ),
+  client: Client.forTestnet()
+    .setOperator(ADMIN_ACCOUNT_ID, ADMIN_ACCOUNT_P_KEY)
+    .setDefaultMaxTransactionFee(new Hbar(100)),
 };
 
 //// #################### admin account details end ###################### ////
@@ -46,10 +46,24 @@ export const user1 = {
   idObject: AccountId.fromString(USER_1_ACCOUNT_ID).toSolidityAddress(),
   privateKey: USER_1_ACCOUNT_P_KEY,
   privateKeyObject: PrivateKey.fromString(USER_1_ACCOUNT_P_KEY),
-  client: Client.forTestnet().setOperator(
-    USER_1_ACCOUNT_ID,
-    USER_1_ACCOUNT_P_KEY
-  ),
+  client: Client.forTestnet()
+    .setOperator(USER_1_ACCOUNT_ID, USER_1_ACCOUNT_P_KEY)
+    .setDefaultMaxTransactionFee(new Hbar(100)),
 };
 
 //// #################### user 1 account details end ###################### ////
+
+const USER_2_ACCOUNT_ID = "0.0.47710057";
+const USER_2_ACCOUNT_P_KEY =
+  "3030020100300706052b8104000a04220420d38b0ed5f11f8985cd72c8e52c206b512541c6f301ddc9d18bd8b8b25a41a80f";
+
+export const user2 = {
+  id: USER_2_ACCOUNT_ID,
+  idObject: AccountId.fromString(USER_2_ACCOUNT_ID).toSolidityAddress(),
+  privateKey: USER_2_ACCOUNT_P_KEY,
+  privateKeyObject: PrivateKey.fromString(USER_2_ACCOUNT_P_KEY),
+  client: Client.forTestnet().setOperator(
+    USER_2_ACCOUNT_ID,
+    USER_2_ACCOUNT_P_KEY
+  ),
+};
